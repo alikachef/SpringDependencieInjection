@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.w3.org/2001/XMLSchema"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> <!-- bean definitions here -->
+
+        <bean id="student" class="com.genspark.assignment.Dependency.Injection.Student" init-method="init" destroy-method="destroy">
+            <property name="id" value= "9013"/>
+            <property name="name" value="ali"/>
+            <property name="ph">
+                <list>
+                    <ref bean="phone"/>
+                    <ref bean="phone1"/>
+                </list>
+            </property>
+            <property name="add" ref="address" />
+        </bean>
+
+        <bean id="phone" class="com.genspark.assignment.Dependency.Injection.Phone">
+            <property name="mob" value="(678) 543 1234" />
+        </bean>
+
+        <bean id="phone1" class="com.genspark.assignment.Dependency.Injection.Phone">
+            <property name="mob" value="(987) 324 4321" />
+        </bean>
+
+        <bean id="address" class="com.genspark.assignment.Dependency.Injection.Address">
+            <property name="city" value="midlothian" />
+            <property name="state" value="VA" />
+            <property name="country" value="USA" />
+            <property name="zipcode" value="23112" />
+        </bean>
+</beans>
